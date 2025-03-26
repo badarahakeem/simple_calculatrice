@@ -1,0 +1,170 @@
+:root {
+  /* Variables pour le mode sombre (par défaut) */
+  --bg-color: #121212;
+  --calculator-bg: #1e1e1e;
+  --display-bg: #1e1e1e;
+  --button-bg: #2d2d2d;
+  --button-hover: #3d3d3d;
+  --button-active: #4d4d4d;
+  --text-color: #ffffff;
+  --function-color: #4caf50;
+  --operator-color: #ffffff;
+  --equals-bg: #ff9800;
+  --equals-hover: #ffb74d;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+.light {
+  /* Variables pour le mode clair */
+  --bg-color: #f5f5f5;
+  --calculator-bg: #ffffff;
+  --display-bg: #f8f8f8;
+  --button-bg: #e0e0e0;
+  --button-hover: #d0d0d0;
+  --button-active: #c0c0c0;
+  --text-color: #333333;
+  --function-color: #4caf50;
+  --operator-color: #2196f3;
+  --equals-bg: #ff9800;
+  --equals-hover: #ffb74d;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.calculator-container {
+  position: relative;
+  width: 320px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: -50px;
+  right: 0;
+}
+
+#theme-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+#theme-button:hover {
+  background-color: var(--button-hover);
+}
+
+.calculator {
+  background-color: var(--calculator-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.display {
+  background-color: var(--display-bg);
+  color: var(--text-color);
+  text-align: right;
+  padding: 20px;
+  font-size: 36px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  word-break: break-all;
+  transition: all 0.3s ease;
+}
+
+.previous-operand {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  min-height: 24px;
+}
+
+.light .previous-operand {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 15px;
+}
+
+button {
+  border: none;
+  border-radius: 50%;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  font-size: 20px;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+button:active {
+  background-color: var(--button-active);
+  transform: scale(0.95);
+}
+
+.function {
+  color: var(--function-color);
+}
+
+.operator {
+  color: var(--operator-color);
+}
+
+.equals {
+  background-color: var(--equals-bg);
+  color: white;
+}
+
+.equals:hover {
+  background-color: var(--equals-hover);
+}
+
+/* Animation pour les boutons */
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.button-press {
+  animation: buttonPress 0.2s ease;
+}
